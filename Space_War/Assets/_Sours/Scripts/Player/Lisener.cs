@@ -21,5 +21,10 @@ public class Lisener : MonoBehaviour
     {
         x = Input.GetAxis("Horizontal");
         _invoker.Move(player.gameObject, x, player.Speed);
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(player.Bullet, player.PlayerPosition);
+            player.gameObject.GetComponent<Shoot>().Shooting(player.Bullet, player.PlayerPosition);
+        }
     }
 }

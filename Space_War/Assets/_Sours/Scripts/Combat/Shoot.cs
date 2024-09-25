@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    //void Shoot()
-    //{
-    //    Instantiate(gameObject.transform.position,)
-    //}
+    public void Shooting(GameObject prefab, GameObject startPoint)
+    {
+
+            Instantiate(prefab,
+           startPoint.transform.position+new Vector3(0,1f,0),
+           prefab.transform.rotation);
+
+    }
 }

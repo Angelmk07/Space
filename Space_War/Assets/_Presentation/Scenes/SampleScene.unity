@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 1747633616}
   - component: {fileID: 1747633615}
   - component: {fileID: 1747633617}
+  - component: {fileID: 1747633618}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -548,6 +549,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 4
+  <Live>k__BackingField: 3
+  <Bullet>k__BackingField: {fileID: 3758388336016721592, guid: 19aa6527a5554c84d95bd95baa62edea, type: 3}
+--- !u!114 &1747633618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747633614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e8149a4652268e42bf92a934da9e6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

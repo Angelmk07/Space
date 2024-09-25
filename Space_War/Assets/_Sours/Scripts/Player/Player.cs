@@ -8,4 +8,13 @@ public class Player : MonoBehaviour
     public int Speed { get; private set;}
     [field: SerializeField]
     public int Live { get; private set; }
+    [field: SerializeField]
+    public GameObject Bullet { get; private set; }
+
+    public GameObject PlayerPosition { get; private set; }
+    private void Awake()
+    {
+        PlayerPosition = gameObject;
+    }
+
 }
