@@ -6,7 +6,7 @@ public class EnemyMove
 {
     int index = 1;
 
-    public void Move(GameObject[] gameObjects, int speed, Vector3 vectorMove)
+    public void Move(GameObject[] gameObjects, float speed, Vector3 vectorMove)
     {
         for (int i = 0; i < gameObjects.Length; i++)
         {
@@ -14,7 +14,7 @@ public class EnemyMove
         }
         if (index == 1)
         {
-            if (gameObjects[gameObjects.Length - 2].transform.position.x > 8.7f)
+            if (gameObjects[gameObjects.Length - 1].transform.position.x > 8.7f)
             {
                 MoveDown(gameObjects);
                 index *= -1;
@@ -34,7 +34,7 @@ public class EnemyMove
     {
         for (int i = 0; i < gameObjects.Length; i++)
         {
-            gameObjects[i].transform.position += Vector3.down * 2;
+            gameObjects[i].transform.position += Vector3.down ;
         }
     }
 }

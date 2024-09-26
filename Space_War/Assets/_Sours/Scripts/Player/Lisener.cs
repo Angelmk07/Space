@@ -12,6 +12,7 @@ public class Lisener : MonoBehaviour
     [SerializeField]
     private Player player;
     private Invoker _invoker;
+    private bool Restart;
 
     private void Start()
     {
@@ -19,12 +20,24 @@ public class Lisener : MonoBehaviour
     }
     void Update()
     {
-        x = Input.GetAxis("Horizontal");
-        _invoker.Move(player.gameObject, x, player.Speed);
-        if (Input.GetMouseButtonDown(0))
+
+        if (!player._isDead)
         {
-            Debug.Log(player.Bullet, player.PlayerPosition);
-            player.gameObject.GetComponent<Shoot>().Shooting(player.Bullet, player.PlayerPosition);
+            x = Input.GetAxis("Horizontal");
+            _invoker.Move(player.gameObject, x, player.Speed);
+            if (Input.GetMouseButtonDown(0))
+            {
+                player.gameObject.GetComponent<Shoot>().Shooting(player.Bullet, player.PlayerPosition);
+            }
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Restart = true;
+            }
+        }
+
+
     }
 }

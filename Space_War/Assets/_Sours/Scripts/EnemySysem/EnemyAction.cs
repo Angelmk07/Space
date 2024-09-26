@@ -22,7 +22,7 @@ public class EnemyAction : MonoBehaviour
 
     [Header("Setings Move")]
     [SerializeField]
-    int speed;
+    float speed;
     [SerializeField]
     Vector3 vector = new Vector3(1, 0, 0);
     EnemyMove _enemyMove;
@@ -30,13 +30,14 @@ public class EnemyAction : MonoBehaviour
     private void Start()
     {
         _enemyMove = new();
-        //Lines = new GameObject[_LiensCount];
+        Lines = new GameObject[_LiensCount];
         Spawn(_LiensCount);
     }
     private void Update()
     {
         _enemyMove.Move(Lines, speed, vector);
     }
+
     public void Spawn(int value)
     {
 
