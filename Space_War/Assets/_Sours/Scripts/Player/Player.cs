@@ -16,5 +16,8 @@ public class Player : MonoBehaviour
     {
         PlayerPosition = gameObject;
     }
-
+    void TakeHit(int value)
+    {
+        Live = -value;
+    }
 }
