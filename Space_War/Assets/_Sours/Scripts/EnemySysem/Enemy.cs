@@ -7,7 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public static Action dead;
-    public static Action Hit;
+    public Action Hit;
     [field: SerializeField]
     public int live { get; private set; }
     [SerializeField]
