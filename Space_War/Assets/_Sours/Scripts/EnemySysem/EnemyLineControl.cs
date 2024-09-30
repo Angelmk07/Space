@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawn : MonoBehaviour
+public class EnemyLineControl : MonoBehaviour
 {
-    //public int EnememyStealLive { get => _enmemyStealLive; set => _enmemyStealLive = value; }
+    public int EnememyLive=> EnmemyOnline;
     public GameObject[] EnemysInLine => gameObjects;
     [SerializeField]
     GameObject StartPoint;
     [SerializeField]
     int EnmemyOnline;
-    //int _enmemyStealLive;
     private GameObject[] gameObjects;
     [SerializeField]
     GameObject prefub;
@@ -19,17 +18,27 @@ public class EnemySpawn : MonoBehaviour
     Vector3 vectorDistanceReal =Vector3.zero;
     [SerializeField]
     Vector3 vectorDistanceChange = new Vector3(0, -2f,0);
-    [SerializeField]
-    EnemyShoot shoot;
+
     private void Awake()
     {
         Spawn(EnmemyOnline);
-         shoot = new();
+
           
     }
     private void Update()
     {
-        shoot.EnemyShoose(gameObjects);
+        EnemyShoose( gameObjects);
+    }
+    public void EnemyShoose(GameObject[] enemyes)
+    {
+        for (int i = enemyes.Length - 1; i > 0; i--)
+        {
+            if (enemyes[i] != null)
+            {
+                enemyes[i].GetComponent<EnemyShoot>().ShootToPlayer();
+                break;
+            }
+        }
     }
     public void Spawn(int value)
     {

@@ -8,6 +8,10 @@ public class Score : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI _Text;
     int _score = 0;
+    public int PlayerScore => _score;
+    [SerializeField]
+    int _scoreAddValue = 100;
+    public int Scor => _score;
     private void OnEnable()
     {
         Enemy.dead += ScoreAdd;
@@ -18,7 +22,7 @@ public class Score : MonoBehaviour
     }
     void ScoreAdd()
     {
-        _score++;
+        _score +=_scoreAddValue;
         _Text.text = $"Your score {_score}"; 
     }
 }

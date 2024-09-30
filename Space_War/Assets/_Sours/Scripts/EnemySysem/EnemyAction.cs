@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAction : MonoBehaviour
 {
+    public static Action Win;
     [SerializeField]
     GameObject line;
     [SerializeField]
@@ -26,12 +28,23 @@ public class EnemyAction : MonoBehaviour
     [SerializeField]
     Vector3 vector = new Vector3(1, 0, 0);
     EnemyMove _enemyMove;
+    int RealTimeEnemy;
+
+    private void OnEnable()
+    {
+        Enemy.dead += OnEnemyDead;
+    }
+    private void OnDisable()
+    {
+        Enemy.dead -= OnEnemyDead;
+    }
 
     private void Start()
     {
         _enemyMove = new();
         Lines = new GameObject[_LiensCount];
         Spawn(_LiensCount);
+        RealTimeEnemy = _LiensCount *line.GetComponent<EnemyLineControl>().EnememyLive;
     }
     private void Update()
     {
@@ -45,6 +58,14 @@ public class EnemyAction : MonoBehaviour
         {
             Lines[i] =Instantiate(line, StartPoint.transform.position + vectorDistanceReal, Quaternion.identity);
             vectorDistanceReal += vectorDistanceChange;
+        }
+    }
+    void OnEnemyDead()
+    {
+        RealTimeEnemy--;
+        if (RealTimeEnemy==0)
+        {
+            Win?.Invoke();
         }
     }
 }

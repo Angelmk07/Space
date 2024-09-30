@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class OnFinishLine : MonoBehaviour
 {
-    GameObject FinishScrin;
-    private void OnTriggerEnter(Collider other)
+
+    [SerializeField]
+    GameObject _player;
+    [SerializeField]
+    GameObject ScreenEnd;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(other.gameObject.layer == 9)
+        if (collision.gameObject.layer == 9)
         {
-            FinishScrin.gameObject.SetActive(true);
-            Time.timeScale = 0;
+            ScreenEnd.gameObject.SetActive(true);
+            _player.GetComponent<Player>().TakeHit(_player.GetComponent<Player>().Live);
+
         }
     }
 

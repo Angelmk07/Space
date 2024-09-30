@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Action PlayerDead;
+    public static Action PlayerHit;
     [field: SerializeField]
     public int Speed { get; private set;}
     [field: SerializeField]
@@ -17,9 +20,14 @@ public class Player : MonoBehaviour
         PlayerPosition = gameObject;
         _isDead = false;
     }
-    void TakeHit(int value)
+    public void TakeHit(int value)
     {
-        Live = -value;
-        _isDead = true;
+        Live -= value;
+        PlayerHit?.Invoke();
+        if (Live <= 0)
+        {
+            _isDead = true;
+            PlayerDead?.Invoke();
+        }
     }
 }

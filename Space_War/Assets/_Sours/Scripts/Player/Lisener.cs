@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Lisener : MonoBehaviour
 {
     [field:SerializeField]
@@ -12,7 +12,8 @@ public class Lisener : MonoBehaviour
     [SerializeField]
     private Player player;
     private Invoker _invoker;
-    private bool Restart;
+    [SerializeField]
+    private Stats _stats;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class Lisener : MonoBehaviour
     void Update()
     {
 
-        if (!player._isDead)
+        if (!_stats.GameStatusEnd)
         {
             x = Input.GetAxis("Horizontal");
             _invoker.Move(player.gameObject, x, player.Speed);
@@ -34,7 +35,7 @@ public class Lisener : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Restart = true;
+                SceneManager.LoadScene("Game");
             }
         }
 

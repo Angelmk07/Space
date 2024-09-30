@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class BulletEnemy : MonoBehaviour
 {
     [field: SerializeField]
     public int Speed { get; private set; }
@@ -13,17 +13,20 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         Vector3 newPosition = transform.position;
-        newPosition.y += 1 * Speed*Time.deltaTime;
+        newPosition.y += 1 * Speed * Time.deltaTime;
         gameObject.transform.position = newPosition;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 9) 
+
+        if (collision.gameObject.layer == 3)
         {
-            collision.gameObject.GetComponent<Enemy>().TakeHit(Power);
+            collision.gameObject.GetComponent<Player>().TakeHit(Power);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+
     }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

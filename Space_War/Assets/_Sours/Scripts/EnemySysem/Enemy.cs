@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int live;
     [SerializeField]
+    private ParticleSystem particle;
+    [SerializeField]
     private int power;
     public int Power => power;
     //public int Live { get => live; set => live = value; }
@@ -20,6 +22,7 @@ public class Enemy : MonoBehaviour
         if (live < 1)
         {
             dead?.Invoke();
+            Instantiate(particle, gameObject.transform.position, Quaternion.identity).GetComponent<ParticleSystem>().Play();
             Destroy(gameObject);
         }
     }
