@@ -7,8 +7,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public static Action dead;
-    [SerializeField]
-    private int live;
+    public static Action Hit;
+    [field: SerializeField]
+    public int live { get; private set; }
     [SerializeField]
     private ParticleSystem particle;
     [SerializeField]
@@ -18,7 +19,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeHit(int value)
     {
-        live =- value;
+        live -= value;
+        Hit?.Invoke();
         if (live < 1)
         {
             dead?.Invoke();
