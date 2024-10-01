@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede72cf982963d54f8941086485f53ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <live>k__BackingField: 5
+  <live>k__BackingField: 2
   particle: {fileID: 2929855255498299870, guid: 3b990c6d255a28f4885280dda043cecd, type: 3}
   power: 1
 --- !u!58 &-6316596774052349699

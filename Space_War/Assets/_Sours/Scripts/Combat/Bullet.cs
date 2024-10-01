@@ -13,10 +13,7 @@ namespace Player.PlayerBullet
         public int Power { get; private set; }
         [SerializeField]
         private LayerMask layerMask;
-        private void Start()
-        {
-
-        }
+  
 
         private void Update()
         {

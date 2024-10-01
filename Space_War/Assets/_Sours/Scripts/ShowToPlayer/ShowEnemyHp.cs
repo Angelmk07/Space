@@ -28,13 +28,8 @@ namespace Ui.ShowhealthEnemy
         private void ChangeImage()
         {
             float healthPercent = (float)Enemy.live / maxHealth;
-            spriteRenderer.color += new Color((1 - (1 / healthPercent)) * 2,
-                spriteRenderer.color.g,
-                spriteRenderer.color.b);
 
-            spriteRenderer.color += new Color(1,
-                spriteRenderer.color.g - 1 / healthPercent,
-                spriteRenderer.color.b);
+            spriteRenderer.color = new Color(1, Mathf.Clamp01(healthPercent * 1.2f), 0);
 
         }
 

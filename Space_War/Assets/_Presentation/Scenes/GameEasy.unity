@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8149a4652268e42bf92a934da9e6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShots: 5
+  maxShots: 3
   reloadTime: 1.5
   _AmmoText: {fileID: 886188967}
 --- !u!50 &1747633619
