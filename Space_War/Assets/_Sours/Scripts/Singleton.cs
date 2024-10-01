@@ -9,5 +9,11 @@ public class Singleton : MonoBehaviour
         if (instance == null)
             instance = this;
     }
+    int EnemyVerticalLinsSet;
+    int EnemyHorizontalSet;
+    int EnemySpeed;
+    int EnemyLive;
+    int bullets;
+    int reloadTime;
 
 }
