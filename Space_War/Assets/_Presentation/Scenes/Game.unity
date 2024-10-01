@@ -319,6 +319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1747633614}
   ScreenEnd: {fileID: 1261743235}
+  Layer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &460238726
 Rigidbody2D:
   serializedVersion: 4
@@ -403,7 +406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bde0a0a43b0a0134aba6616f14b8cfaf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9329b0ae22cf864ca3e51fa526bb105, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -945,7 +948,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/3
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5cbc58e9b1e482649a1e297bfe06cd52, type: 2}
   m_sharedMaterial: {fileID: -3445375912136058111, guid: 5cbc58e9b1e482649a1e297bfe06cd52, type: 2}
@@ -1690,7 +1693,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8b9ca82f9dd1433499dead7cb6fc47da, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c680df2a929a5740975b1c553640791, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1711,7 +1714,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.38, y: 0.38, z: 0.38}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1729,7 +1732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Speed>k__BackingField: 4
-  <Live>k__BackingField: 3
+  <Live>k__BackingField: 5
   <Bullet>k__BackingField: {fileID: 3758388336016721592, guid: 19aa6527a5554c84d95bd95baa62edea, type: 3}
 --- !u!114 &1747633618
 MonoBehaviour:
@@ -1743,8 +1746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8149a4652268e42bf92a934da9e6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShots: 3
-  reloadTime: 2
+  maxShots: 5
+  reloadTime: 1.5
   _AmmoText: {fileID: 886188967}
 --- !u!50 &1747633619
 Rigidbody2D:
@@ -1805,18 +1808,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.23470926, y: -0.3854084}
+  m_Offset: {x: 0.03358221, y: -0.53163016}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 17.58, y: 17.59}
+    oldSize: {x: 5.92, y: 4.21}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.8565607, y: 8.802671}
+  m_Size: {x: 3.2298489, y: 3.3292882}
   m_EdgeRadius: 0
 --- !u!1 &1978262882
 GameObject:

@@ -1,40 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EnemyMove
+namespace Enemy.EMovment 
 {
-    int index = 1;
-
-    public void Move(GameObject[] gameObjects, float speed, Vector3 vectorMove)
+    public class EnemyMove
     {
-        for (int i = 0; i < gameObjects.Length; i++)
+        int index = 1;
+
+        public void Move(GameObject[] gameObjects, float speed, Vector3 vectorMove)
         {
-            gameObjects[i].transform.position += vectorMove * index * speed * Time.deltaTime;
-        }
-        if (index == 1)
-        {
-            if (gameObjects[gameObjects.Length - 1].transform.position.x > 8.7f)
+            for (int i = 0; i < gameObjects.Length; i++)
             {
-                MoveDown(gameObjects);
-                index *= -1;
+                gameObjects[i].transform.position += vectorMove * index * speed * Time.deltaTime;
+            }
+            if (index == 1)
+            {
+                if (gameObjects[gameObjects.Length - 1].transform.position.x > 8.7f)
+                {
+                    MoveDown(gameObjects);
+                    index *= -1;
+                }
+            }
+            else
+            {
+                if (gameObjects[0].transform.position.x < -8.7f)
+                {
+                    MoveDown(gameObjects);
+                    index *= -1;
+                }
             }
         }
-        else
-        {
-            if (gameObjects[0].transform.position.x < -8.7f)
-            {
-                MoveDown(gameObjects);
-                index *= -1; 
-            }
-        }
-    }
 
-    void MoveDown(GameObject[] gameObjects)
-    {
-        for (int i = 0; i < gameObjects.Length; i++)
+        void MoveDown(GameObject[] gameObjects)
         {
-            gameObjects[i].transform.position += Vector3.down ;
+            for (int i = 0; i < gameObjects.Length; i++)
+            {
+                gameObjects[i].transform.position += Vector3.down;
+            }
         }
     }
 }

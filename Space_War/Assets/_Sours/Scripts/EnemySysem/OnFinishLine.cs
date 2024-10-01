@@ -1,22 +1,33 @@
+using Player.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class OnFinishLine : MonoBehaviour
+namespace Game.GameEnd
 {
-
-    [SerializeField]
-    GameObject _player;
-    [SerializeField]
-    GameObject ScreenEnd;
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class OnFinishLine : MonoBehaviour
     {
-        if (collision.gameObject.layer == 9)
+
+        [SerializeField]
+        private GameObject _player;
+        private PlayerBase ScriptPlayer;
+        [SerializeField]
+        private GameObject ScreenEnd;
+        [SerializeField]
+        private LayerMask Layer;
+        private void Start()
         {
-            ScreenEnd.gameObject.SetActive(true);
-            _player.GetComponent<Player>().TakeHit(_player.GetComponent<Player>().Live);
-
+            ScriptPlayer = _player.GetComponent<PlayerBase>();
         }
-    }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (Utils.LayerMaskUtil.ContainsLayer(Layer, collision.gameObject))
+            {
+                ScreenEnd.gameObject.SetActive(true);
+                ScriptPlayer.TakeHit(ScriptPlayer.Live);
 
+            }
+        }
+
+    }
 }
+

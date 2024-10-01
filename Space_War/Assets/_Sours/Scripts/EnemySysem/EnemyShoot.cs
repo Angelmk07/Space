@@ -10,10 +10,10 @@ public class EnemyShoot : MonoBehaviour
     private Coroutine _coroutine;
     public void ShootToPlayer()
     {
-                if (_coroutine == null)
-                {
-                    _coroutine = StartCoroutine(InitShoot());
-                }
+        if (_coroutine == null)
+        {
+            _coroutine = StartCoroutine(InitShoot());
+        }
     }
     void EnemyShooting(GameObject prefub)
     {

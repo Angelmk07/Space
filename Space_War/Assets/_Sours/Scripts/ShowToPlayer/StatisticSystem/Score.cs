@@ -1,3 +1,4 @@
+using Enemy.Enemy;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,11 +15,11 @@ public class Score : MonoBehaviour
     public int Scor => _score;
     private void OnEnable()
     {
-        Enemy.dead += ScoreAdd;
+        EnemyBase.dead += ScoreAdd;
     }
     private void OnDisable()
     {
-        Enemy.dead -= ScoreAdd;
+        EnemyBase.dead -= ScoreAdd;
     }
     void ScoreAdd()
     {

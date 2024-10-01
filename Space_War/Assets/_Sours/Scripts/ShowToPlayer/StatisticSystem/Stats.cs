@@ -1,3 +1,6 @@
+using Enemy.Enemy;
+using Enemy.EnemyHorizontalLine;
+using Player.Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,8 +28,8 @@ public class Stats : MonoBehaviour
     }
     private void OnEnable()
     {
-        Enemy.dead += DeadsAdd;
-        Player.PlayerDead += ShowEndScreen;
+        EnemyBase.dead += DeadsAdd;
+        PlayerBase.PlayerDead += ShowEndScreen;
         EnemyAction.Win += WinText;
     }
 
@@ -41,8 +44,8 @@ public class Stats : MonoBehaviour
 
     private void OnDisable()
     {
-        Enemy.dead -= DeadsAdd;
-        Player.PlayerDead -= ShowEndScreen;
+        EnemyBase.dead -= DeadsAdd;
+        PlayerBase.PlayerDead -= ShowEndScreen;
         EnemyAction.Win -= WinText;
     }
     void DeadsAdd()

@@ -1,31 +1,41 @@
+using Enemy.Enemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Bullet : MonoBehaviour
+using static UnityEditor.Experimental.GraphView.GraphView;
+namespace Player.PlayerBullet 
 {
-    [field: SerializeField]
-    public int Speed { get; private set; }
-    [field: SerializeField]
-    public int Power { get; private set; }
-
-
-    private void Update()
+    public class Bullet : MonoBehaviour
     {
-        Vector3 newPosition = transform.position;
-        newPosition.y += 1 * Speed*Time.deltaTime;
-        gameObject.transform.position = newPosition;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.layer == 9) 
+        [field: SerializeField]
+        public int Speed { get; private set; }
+        [field: SerializeField]
+        public int Power { get; private set; }
+        [SerializeField]
+        private LayerMask layerMask;
+        private void Start()
         {
-            collision.gameObject.GetComponent<Enemy>().TakeHit(Power);
+
         }
-        Destroy(gameObject);
+
+        private void Update()
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.y += 1 * Speed * Time.deltaTime;
+            gameObject.transform.position = newPosition;
+        }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (Utils.LayerMaskUtil.ContainsLayer(layerMask, collision.gameObject))
+            {
+                collision.gameObject.GetComponent<EnemyBase>().TakeHit(Power);
+            }
+            Destroy(gameObject);
+        }
+        private void OnBecameInvisible()
+        {
+            Destroy(gameObject);
+        }
     }
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+
 }
