@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+    public static Action PlayerDoShoot;
     [SerializeField]
     private int maxShots = 3;
     [SerializeField]
@@ -19,6 +21,7 @@ public class Shoot : MonoBehaviour
         {
             if (currentShots < maxShots)
             {
+                PlayerDoShoot?.Invoke();
                 Instantiate(prefab,
                     startPoint.transform.position + new Vector3(0, 1f, 0),
                     prefab.transform.rotation);
