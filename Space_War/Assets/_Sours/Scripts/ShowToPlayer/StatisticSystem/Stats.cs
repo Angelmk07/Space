@@ -1,6 +1,8 @@
 using Enemy.Enemy;
 using Enemy.EnemyHorizontalLine;
+using Game.GameEnd;
 using Player.Player;
+using Player.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,17 +23,17 @@ public class Stats : MonoBehaviour
     [SerializeField]
     Image _image;
     int _kills =0;
-    [SerializeField]
-    PlayerResources playerResources;
+
     public bool GameStatusEnd { get; private set; }
     private void Awake()
     {
-
+        GameStatusEnd = false;
     }
     private void OnEnable()
     {
         EnemyBase.dead += DeadsAdd;
         PlayerBase.PlayerDead += ShowEndScreen;
+        OnFinishLine.PlayerLose += ShowEndScreen;
         EnemyAction.Win += WinText;
     }
 
@@ -49,6 +51,7 @@ public class Stats : MonoBehaviour
         EnemyBase.dead -= DeadsAdd;
         PlayerBase.PlayerDead -= ShowEndScreen;
         EnemyAction.Win -= WinText;
+        OnFinishLine.PlayerLose -= ShowEndScreen;
     }
     void DeadsAdd()
     {
@@ -62,7 +65,7 @@ public class Stats : MonoBehaviour
         Screen.SetActive(true);
         _Text.text = $"Your Score {_score.PlayerScore}, kills {_kills}";
         GameStatusEnd = true;
-        playerResources.AddScore(_score.PlayerScore);
+        PlayerResources.Instance.AddScore(_score.PlayerScore);
 
     }
 

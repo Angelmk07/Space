@@ -20,11 +20,13 @@ namespace Enemy.EnemyHorizontalLine
         [SerializeField]
         private GameObject[] Lines;
         [Header("Spawn setings")]
-
+        [SerializeField]
+        private GameObject perfubEnemy;
         [SerializeField]
         private Vector3 vectorDistanceChange = new Vector3(1, 0, 0);
         private Vector3 vectorDistanceReal = Vector3.zero;
-
+        [SerializeField]
+        private int EnmemyOnline;
 
 
         [Header("Setings Move")]
@@ -49,7 +51,7 @@ namespace Enemy.EnemyHorizontalLine
             _enemyMove = new();
             Lines = new GameObject[_LiensCount];
             Spawn(_LiensCount);
-            RealTimeEnemy = _LiensCount * line.GetComponent<EnemyLineControl>().EnememyLive;
+            RealTimeEnemy = _LiensCount * EnmemyOnline;
         }
         private void Update()
         {
@@ -62,6 +64,7 @@ namespace Enemy.EnemyHorizontalLine
             for (int i = 0; i < value; i++)
             {
                 Lines[i] = Instantiate(line, StartPoint.transform.position + vectorDistanceReal, Quaternion.identity);
+                Lines[i].GetComponent<EnemyLineControl>().Spawn(EnmemyOnline, perfubEnemy);
                 vectorDistanceReal += vectorDistanceChange;
             }
         }

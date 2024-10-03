@@ -6,7 +6,8 @@ namespace Enemy.EMovment
     public class EnemyMove
     {
         int index = 1;
-
+        float _leftside = 8.7f;
+        float _rightside = -8.7f;
         public void Move(GameObject[] gameObjects, float speed, Vector3 vectorMove)
         {
             for (int i = 0; i < gameObjects.Length; i++)
@@ -15,7 +16,7 @@ namespace Enemy.EMovment
             }
             if (index == 1)
             {
-                if (gameObjects[gameObjects.Length - 1].transform.position.x > 8.7f)
+                if (gameObjects[gameObjects.Length - 1].transform.position.x > _leftside)
                 {
                     MoveDown(gameObjects);
                     index *= -1;
@@ -23,7 +24,7 @@ namespace Enemy.EMovment
             }
             else
             {
-                if (gameObjects[0].transform.position.x < -8.7f)
+                if (gameObjects[0].transform.position.x < _rightside)
                 {
                     MoveDown(gameObjects);
                     index *= -1;

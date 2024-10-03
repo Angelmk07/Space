@@ -1,4 +1,5 @@
 using Player.Player;
+using Player.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace Ui.ShowhealthPlayr
         private int countlives;
         private void Awake()
         {
-            gameObjects = new GameObject[PlayerObj.GetComponent<PlayerBase>().Live];
-            for (int i = 0; i < PlayerObj.GetComponent<PlayerBase>().Live; i++)
+            gameObjects = new GameObject[PlayerObj.GetComponent<PlayerBase>().Live+PlayerResources.Instance.PlayerLivesAdd];
+            for (int i = 0; i < gameObjects.Length; i++)
             {
                 gameObjects[i] = Instantiate(_livePrefub, gameObject.transform);
             }
@@ -35,7 +36,7 @@ namespace Ui.ShowhealthPlayr
         }
         private void LiveChange()
         {
-            if (countlives <= gameObjects.Length)
+            if (countlives < gameObjects.Length)
             {
                 gameObjects[countlives].SetActive(false);
                 countlives--;

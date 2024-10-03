@@ -1,30 +1,47 @@
+using Player.Shooting;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
-public class SupportController : MonoBehaviour
+namespace SupportToplayer.supportShip
 {
-    [SerializeField]
-    private GameObject prefab;
-    private void OnEnable()
+    public class SupportController : MonoBehaviour
     {
-        Shoot.PlayerDoShoot += ShootingSupport;
-    }
-    private void OnDisable()
-    {
-        Shoot.PlayerDoShoot += ShootingSupport;
-    }
-    public void ShootingSupport()
-    {
-        if (gameObject!=null)
+        public static Action SupportDead;
+        [SerializeField]
+        private GameObject prefab;
+        [SerializeField]
+        private int live;
+        private void OnEnable()
         {
-            Instantiate(prefab,
-            gameObject.transform.position + new Vector3(0, 1f, 0),
-            prefab.transform.rotation);
+            Shoot.PlayerDoShoot += ShootingSupport;
+        }
+        private void OnDisable()
+        {
+            Shoot.PlayerDoShoot -= ShootingSupport;
+        }
+        public void ShootingSupport()
+        {
+            if (gameObject != null)
+            {
+                Instantiate(prefab,
+                gameObject.transform.position + new Vector3(0, 1f, 0),
+                prefab.transform.rotation);
+            }
+
+        }
+
+        public void Takehit(int value)
+        {
+            live -= value;
+            if (live < 1)
+            {
+                Destroy(gameObject);
+                SupportDead?.Invoke();
+            }
         }
 
     }
-
-
 }
+
