@@ -1,3 +1,4 @@
+using Player.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,10 @@ namespace Enemy.Enemy
                 Destroy(gameObject);
             }
         }
-
+        public void AddExtraHealth(int value)
+        {
+            live += value;
+        }
     }
 
 }
